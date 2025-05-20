@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bihar Route Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-container {
+            position: fixed;
+            top: 0px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .content-container {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(3px);
+            margin-top: 5px;
+        }
+        .white-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="bg-container" id="backgroundImage"></div>
+    <div class="container mx-auto px-4 py-8 content-container">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-4xl font-bold text-blue-600">Bihar Route Planner</h1>
+            <div class="space-x-4">
+                <a href="tourism.html" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">Tourism</a>
+                <button id="addCity" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Add City</button>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Route Finder Section -->
+            <div class="white-container p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold mb-4">Find Route</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">From</label>
+                        <select id="fromCity" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <option value="">Select starting city</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">To</label>
+                        <select id="toCity" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <option value="">Select destination city</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Time of Day</label>
+                        <select id="timeOfDay" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <option value="day">Day</option>
+                            <option value="night">Night</option>
+                        </select>
+                    </div>
+                    <button id="findRoute" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Find Route
+                    </button>
+                </div>
+            </div>
+
+            <!-- Add City Section -->
+            <div class="white-container p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold mb-4">Add New City</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">City Name</label>
+                        <input type="text" id="newCity" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Connected City</label>
+                        <select id="connectedCity" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <option value="">Select existing city</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Distance (km)</label>
+                        <input type="number" id="distance" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button id="addCity" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                        Add City
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="mt-8 white-container p-6 rounded-lg shadow-md hidden">
+            <h2 class="text-2xl font-semibold mb-4">Route Details</h2>
+            <div class="space-y-4">
+                <div id="routeDetails" class="space-y-2"></div>
+                <div id="mapLink" class="mt-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

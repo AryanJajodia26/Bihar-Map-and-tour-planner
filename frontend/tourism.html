@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bihar Tourism Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            object-fit: cover;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .content-container {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+        }
+        .white-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+        }
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+            min-height: 100vh;
+            min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/ZPoyIgaXOhU?autoplay=1&loop=1&playlist=ZPoyIgaXOhU&controls=0&showinfo=0&rel=0&modestbranding=1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="overlay"></div>
+    <div class="container mx-auto px-4 py-8 content-container">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-4xl font-bold text-white">Bihar Tourism Planner</h1>
+            <div class="flex items-center space-x-4">
+                <a href="https://tourism.bihar.gov.in/" target="_blank" 
+                   class="flex items-center bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    Go to Bihar Gov Official Website
+                </a>
+                <a href="index.html" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Back to Route Planner</a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Tourist Destinations Section -->
+            <div class="white-container p-6 rounded-lg shadow-md overflow-y-auto max-h-[90vh]">
+
+                <h2 class="text-2xl font-semibold mb-4">Select Tourist Destinations</h2>
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="city-checkbox" value="Patna">
+                            <span class="font-medium">Patna</span>
+                        </label>
+                        <p class="text-sm text-gray-600 ml-6">Golghar, Takht Sri Patna Sahib, Maner Sharif</p>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="city-checkbox" value="Rajgir-Nalanda">
+                            <span class="font-medium">Rajgir–Nalanda</span>
+                        </label>
+                        <p class="text-sm text-gray-600 ml-6">Nalanda University Ruins, Rajgir Hot Springs, Cyclopean Wall</p>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="city-checkbox" value="Gaya">
+                            <span class="font-medium">Gaya</span>
+                        </label>
+                        <p class="text-sm text-gray-600 ml-6">Mahabodhi Temple, Vishnupad Temple</p>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="city-checkbox" value="Vaishali">
+                            <span class="font-medium">Vaishali</span>
+                        </label>
+                        <p class="text-sm text-gray-600 ml-6">Ashokan Pillar, Buddha Stupa</p>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="city-checkbox" value="East Champaran">
+                            <span class="font-medium">East Champaran</span>
+                        </label>
+                        <p class="text-sm text-gray-600 ml-6">Kesaria Stupa</p>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="city-checkbox" value="West Champaran">
+                            <span class="font-medium">West Champaran</span>
+                        </label>
+                        <p class="text-sm text-gray-600 ml-6">Valmiki National Park</p>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="city-checkbox" value="Munger">
+                            <span class="font-medium">Munger</span>
+                        </label>
+                        <p class="text-sm text-gray-600 ml-6">Munger Fort, Bhimbandh Wildlife Sanctuary</p>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="city-checkbox" value="Bhagalpur">
+                            <span class="font-medium">Bhagalpur</span>
+                        </label>
+                        <p class="text-sm text-gray-600 ml-6">Vikramshila University, Dolphin Sanctuary</p>
+                    </div>
+                    <button id="generatePlan" class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                        Generate Trip Plan
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tour Plan Section -->
+            <div id="tourPlan" class="white-container p-6 rounded-lg shadow-md hidden">
+                <h2 class="text-2xl font-semibold mb-4">Your Tour Plan</h2>
+                <div id="planDetails" class="space-y-6"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="tourism.js"></script>
+</body>
+</html> 
